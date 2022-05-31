@@ -12,10 +12,11 @@ public class Test {
 
     public static void main(String[] args) {
 
-        int[] numbers = array.generateArray(15);
-        routine(new Merge(), numbers);
-        routine(new Bubble(), numbers);
-        routine(new Selection(), numbers);
+        int[] numbers = array.generateArray(20);
+        //routine(new Merge(), numbers);
+        //routine(new Bubble(), numbers);
+        //routine(new Selection(), numbers);
+        routine(new Insertion(), numbers);
         // array.printArray(numbers);
     }
 }
