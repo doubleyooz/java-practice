@@ -1,10 +1,9 @@
-public class Bubble {
-    private static void swap(int[] arr, int i, int j){
+public class Bubble implements Sorter{
+    private void swap(int[] arr, int i, int j){
         arr[i] = (arr[i] + arr[j]) - (arr[j] = arr[i]);
     }
     
-    private static void bubbleSort(int[] arr){
-        int smaller;
+    private void bubbleSort(int[] arr){
         for(int i=0; i < arr.length-1; i++){
             for(int j=0; j < arr.length-1; j++){
                 if(arr[j] > arr[j+1])
@@ -13,7 +12,7 @@ public class Bubble {
         }
         
     }
-    public static int[] sortArray(int[] arr){
+    public int[] sortArray(int[] arr){
         bubbleSort(arr);
         return arr;
     }
