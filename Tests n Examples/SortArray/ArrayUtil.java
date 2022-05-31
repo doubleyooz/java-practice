@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Arrays;
 
-public class Array {
+public class ArrayUtil {
     public void shuffleArray(int[] arr) {
         Random r = new Random();
 
