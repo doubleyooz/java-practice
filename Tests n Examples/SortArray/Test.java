@@ -3,17 +3,19 @@ public class Test {
 
     private static void routine(Sorter sorter, int[] numbers) {
         array.printArray(numbers);
-        sorter.sortArray(numbers);
+        sorter.sortArray(numbers);       
+        System.out.print(array.isSorted(numbers, numbers.length) ? "SUCCEED! " : "FAILED! ");
         array.printArray(numbers);
         array.shuffleArray(numbers);
+        System.out.println();
     }
 
     public static void main(String[] args) {
 
-        int[] numbers = array.generateArray(6);
+        int[] numbers = array.generateArray(15);
         routine(new Merge(), numbers);
         routine(new Bubble(), numbers);
         routine(new Selection(), numbers);
-        //array.printArray(numbers);
+        // array.printArray(numbers);
     }
 }

@@ -23,7 +23,13 @@ public class ArrayUtil {
         return numbers;
     }
 
-    public void printArray(int[] array){
+    public boolean isSorted(int[] array, int n) {
+        if (n == 1 || n == 0)
+            return true;
+        return array[n - 2] <= array[n - 1] && isSorted(array, n - 1);
+    }
+
+    public void printArray(int[] array) {
         System.out.println(Arrays.toString(array));
     }
 
