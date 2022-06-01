@@ -1,5 +1,5 @@
 public class Insertion implements Sorter {
-    private void selectionSort(int[] arr) {
+    private void insertionSort(int[] arr) {
         int j, key;
         for (int i = 1; i < arr.length; i++) {
             key = arr[i];
@@ -15,7 +15,7 @@ public class Insertion implements Sorter {
     }
 
     public int[] sortArray(int[] arr) {
-        selectionSort(arr);
+        insertionSort(arr);
         return arr;
     }
 }
