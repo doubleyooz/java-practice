@@ -14,8 +14,8 @@ public class Insertion implements Sorter {
 
     }
 
-    public int[] sortArray(int[] arr) {
+    public void sortArray(int[] arr) {
         insertionSort(arr);
-        return arr;
+
     }
 }

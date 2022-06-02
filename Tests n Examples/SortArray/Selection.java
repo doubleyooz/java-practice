@@ -23,8 +23,8 @@ public class Selection implements Sorter {
 
     }
 
-    public int[] sortArray(int[] arr) {
+    public void sortArray(int[] arr) {
         selectionSort(arr);
-        return arr;
+
     }
 }

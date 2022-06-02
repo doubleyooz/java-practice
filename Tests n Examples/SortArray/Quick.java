@@ -28,9 +28,8 @@ public class Quick implements Sorter {
         }
     }
 
-    public int[] sortArray(int[] arr) {
-
+    public void sortArray(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
-        return arr;
+
     }
 }

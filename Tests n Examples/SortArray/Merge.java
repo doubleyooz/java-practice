@@ -43,8 +43,8 @@ public class Merge implements Sorter {
         }
     }
 
-    public int[] sortArray(int[] arr) {
+    public void sortArray(int[] arr) {
         mergeSort(arr);
-        return arr;
+
     }
 }

@@ -12,8 +12,8 @@ public class Bubble implements Sorter{
         }
         
     }
-    public int[] sortArray(int[] arr){
+    public void sortArray(int[] arr){
         bubbleSort(arr);
-        return arr;
+    
     }
 }
