@@ -12,12 +12,13 @@ public class Test {
 
     public static void main(String[] args) {
 
-        int[] numbers = array.generateArray(8);
+        int[] numbers = array.generateArray(10);
         //routine(new Merge(), numbers);
         //routine(new Bubble(), numbers);
         //routine(new Selection(), numbers);
         //routine(new Quick(), numbers);
-        routine(new Counting(), numbers);
+        //routine(new Counting(), numbers);
+        routine(new Radix(), numbers);
         // array.printArray(numbers);
     }
 }
