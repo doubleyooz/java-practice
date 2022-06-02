@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Bucket implements Sorter {
     private class CustomArray {
         private int size = 0;
