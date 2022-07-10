@@ -35,15 +35,15 @@ public class TestStack {
         // The can't retrieves elements from an empty stack
         results.add(testGetEmptyStackTop());
 
-        // The stack top position must to be -1
+        // The stack top position must be -1
         results.add(Assert.assertEqual(stack.getTop(), -1, "Stack top position"));
         
 
-        // The stack top element must to be 42
+        // The stack top element must be 42
         stack.push(42);
         results.add(Assert.assertEqual(stack.getNext(), 42, "Stack top element"));
 
-        // The stack top element must to be 20
+        // The stack top element must be 20
         stack.push(20);
         results.add(Assert.assertEqual(stack.getNext(), 20, "Stack top element"));
 
@@ -51,7 +51,7 @@ public class TestStack {
         stack.pop();
         results.add(Assert.assertEqual(stack.getNext(), 42, "Stack top element"));
 
-        // The stack top must to be -1
+        // The stack top must be -1
         stack.pop();
         results.add(testGetEmptyStackTop());
 
@@ -62,7 +62,7 @@ public class TestStack {
             stack.push(i);
         }
 
-        // The stack top position must to be 9
+        // The stack top position must be 9
         results.add(Assert.assertEqual(stack.getTop(), 9, "Stack top position"));
         
 
