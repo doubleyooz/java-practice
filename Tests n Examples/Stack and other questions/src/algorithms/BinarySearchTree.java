@@ -56,6 +56,61 @@ public class BinarySearchTree {
         return recContains(head, number);
     }
 
+    public void deleteElement(int number) {
+        recDelete(head, number);
+    }
+
+    private void recDelete(Node node, int number) {
+
+        if (number <= node.value) {
+            if (node.left != null) {
+                if (number == node.left.value) {
+                    
+                    if (node.left.left != null && node.left.right != null) { 
+                                
+                        Node temp = getBiggerParentNode(node.left);
+                        temp.value = temp.right.value;
+                        temp.right = null;
+                    } else if (node.left.left != null) {
+                        node.left = node.left.left;
+
+                    } else if (node.left.right != null) {
+                        node.left = node.left.right;
+
+                    } else
+                        node.left = null;
+
+                } else
+                    recDelete(node.left, number);
+
+            }
+
+        } else if (node.right != null) {
+            if (number == node.right.value) {
+                System.out.println(node.right.right.value);
+                if (node.right.left != null && node.right.right != null) {
+                   
+                  
+
+                    Node temp = getSmallerParentNode(node.right);
+                   
+                    node.right.value = temp.left.value;
+                    temp.left = null;
+                    
+                } else if (node.right.left != null) {
+                    node.right = node.right.left;
+
+                } else if (node.right.right != null) {
+                    
+                    node.right = node.right.right;
+                } else
+                    node.right = null;
+            } else
+                recDelete(node.right, number);
+        }
+
+    }
+
     private boolean recContains(Node node, int number) {
         if (number == node.value)
             return true;
@@ -63,13 +118,29 @@ public class BinarySearchTree {
             if (node.left != null)
                 return recContains(node.left, number);
 
-        } else {
-            if (node.right != null)
-                return recContains(node.right, number);
-        }
+        } else if (node.right != null)
+            return recContains(node.right, number);
+
         return false;
 
-        
+    }
+
+    private Node getSmallerParentNode(Node node) {
+        if (node.left.left == null)
+            return node;
+
+        else
+            return getSmallerParentNode(node.left);
+
+    }
+
+    private Node getBiggerParentNode(Node node) {
+        if (node.right.right == null)
+            return node;
+
+        else
+            return getBiggerParentNode(node.right);
+
     }
 
     public void list() {

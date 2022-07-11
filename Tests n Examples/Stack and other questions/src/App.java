@@ -60,10 +60,10 @@ public class App {
          * 
          *                 5
          *       2                 65
-         *          3          50       
-         *                  21     52
-         *               12    23      100
-         *                                  174
+         *         3            50      100
+         *                  21       52     174
+         *               12    23      
+         *                               
          * 
          */
 
@@ -75,12 +75,23 @@ public class App {
         //for (int i = 0; i < 50; i++)
           //  bst.add(rand.nextInt(1000));
 
-        System.out.println(bst.getSize());
+
 
         // bst.list();
         //System.out.println(Arrays.toString(bst.getArray()));
         System.out.println(Arrays.toString(bst.getSortedArray()));
-        System.out.println(bst.contains(51));
+        
+        bst.deleteElement(65);
+        System.out.println(Arrays.toString(bst.getSortedArray()));
+        bst.deleteElement(50);
+        System.out.println(Arrays.toString(bst.getSortedArray()));
+        
+        /*for (int i = 1; i < numbers.length; i++){
+            System.out.println(numbers[i]);
+            bst.deleteElement(numbers[i]);
+            System.out.println(Arrays.toString(bst.getSortedArray()));
+        }
+        */
     }
 
 }
