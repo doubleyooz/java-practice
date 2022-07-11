@@ -1,7 +1,9 @@
 package src;
 
 import java.util.Arrays;
+import java.util.Random;
 
+import src.algorithms.BinarySearchTree;
 import src.algorithms.ChainedList;
 import src.algorithms.Queue2;
 import src.algorithms.Stack;
@@ -34,20 +36,51 @@ public class App {
          * }
          */
 
-        ChainedList chain = new ChainedList();
+        /*
+         * ChainedList chain = new ChainedList();
+         * 
+         * chain.add(12);
+         * chain.add(56);
+         * chain.add(3213);
+         * 
+         * System.out.println(Arrays.toString(chain.getArray()));
+         * 
+         * //chain.addAtBeginning(42);
+         * chain.addAtPosition(10, 42);
+         * 
+         * System.out.println(Arrays.toString(chain.getArray()));
+         * chain.deleteElement(0);
+         * System.out.println(Arrays.toString(chain.getArray()));
+         * 
+         */
 
-        chain.add(12);
-        chain.add(56);
-        chain.add(3213);
+        BinarySearchTree bst = new BinarySearchTree();
 
-        System.out.println(Arrays.toString(chain.getArray()));
+        /*
+         * 
+         *                 5
+         *       2                 65
+         *          3          50       
+         *                  21     52
+         *               12    23      100
+         *                                  174
+         * 
+         */
 
-        //chain.addAtBeginning(42);
-        chain.addAtPosition(10, 42);
+        Random rand = new Random();
+        int[] numbers = new int[] { 5, 65, 2, 50, 21, 52, 12, 23, 100, 174, 3 };
+        for (int i = 0; i < numbers.length; i++)
+            bst.add(numbers[i]);
+        
+        //for (int i = 0; i < 50; i++)
+          //  bst.add(rand.nextInt(1000));
 
-        System.out.println(Arrays.toString(chain.getArray()));
-        chain.deleteElement(0);
-        System.out.println(Arrays.toString(chain.getArray()));
+        System.out.println(bst.getSize());
+
+        // bst.list();
+        //System.out.println(Arrays.toString(bst.getArray()));
+        System.out.println(Arrays.toString(bst.getSortedArray()));
+        System.out.println(bst.contains(51));
     }
 
 }

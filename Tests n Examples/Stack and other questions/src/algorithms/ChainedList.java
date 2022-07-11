@@ -105,6 +105,10 @@ public class ChainedList {
         size--;
     }
 
+    public int getSize(){
+        return size;
+    }
+
     public void list() {
         Node temp = head;
         while (temp.next != null) {
