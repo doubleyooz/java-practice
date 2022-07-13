@@ -65,7 +65,7 @@ public class App {
 		minhaLista.insert(200);
       
 		System.out.println(minhaLista.size() == 2);  
-        System.out.println(Arrays.toString(minhaLista.toArray()));
+        
 
 		System.out.println(minhaLista.toArray()[0] == 200);
 		System.out.println(minhaLista.toArray()[1] == 100);
@@ -74,15 +74,22 @@ public class App {
 		System.out.println(minhaLista.toArray()[0] == 300);
 		System.out.println(minhaLista.toArray()[1] == 200);
 		System.out.println(minhaLista.toArray()[2] == 100);
+        //System.out.println(Arrays.toString(minhaLista.toArray()));
 		minhaLista.remove(100);
+        //System.out.println(Arrays.toString(minhaLista.toArray()));
 		System.out.println(minhaLista.size() == 2);
+        
 		System.out.println(minhaLista.toArray()[0] == 300);
 		System.out.println(minhaLista.toArray()[1] == 200);
+        //System.out.println(Arrays.toString(minhaLista.toArray()));
 		minhaLista.remove(300);
+        //System.out.println(Arrays.toString(minhaLista.toArray()));
 		System.out.println(minhaLista.size() == 1);
 		System.out.println(minhaLista.toArray()[0] == 200);
+        
 		System.out.println(minhaLista.search(200) == 200);
 		System.out.println();
+        System.out.println();
 		
 		System.out.println("Brincando com BST...");
 		BST_IF minhaArvore = new BinarySearchTree();

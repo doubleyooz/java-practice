@@ -2,6 +2,7 @@ package src.algorithms;
 
 import java.util.NoSuchElementException;
 import src.interfaces.ListaEncadeada_IF;
+import src.utils.CustomArray;
 
 public class ChainedList implements ListaEncadeada_IF {
     private class Node {
@@ -65,6 +66,21 @@ public class ChainedList implements ListaEncadeada_IF {
 
     public int search(int value) throws NoSuchElementException {
         Node temp = head;
+        
+        while (temp.value != value && temp.next != null) {
+
+            temp = temp.next;
+            
+        }
+        if (temp.value == value)
+            return value;
+        else
+            throw new NoSuchElementException();
+    }
+
+
+    public int getElementIndex(int value) {
+        Node temp = head;
         int i = 0;
         while (temp.value != value && temp.next != null) {
 
@@ -74,10 +90,10 @@ public class ChainedList implements ListaEncadeada_IF {
         if (temp.value == value)
             return i;
         else
-            throw new NoSuchElementException();
+            return -1;
     }
 
-    public int getElement(int index) {
+    public int getElementByIndex(int index) {
         if (index < 0 || index >= size) {
             return -1;
         }
@@ -91,7 +107,29 @@ public class ChainedList implements ListaEncadeada_IF {
         return temp.value;
     }
 
-    public void remove(int index) {
+    public void remove(int value) {
+
+        Node temp = head;
+        if (temp.value == value) {
+            head = temp.next;
+            size--;
+            return;
+        }
+
+        while (temp.next.value != value && temp.next.next != null) {
+
+            temp = temp.next;
+
+        }
+
+        if (temp.next.value == value) {
+            temp.next = temp.next.next;
+            size--;
+        }
+
+    }
+
+    public void removeByIndex(int index) {
         if (index == 0) {
             head = head.next;
         }
@@ -130,17 +168,34 @@ public class ChainedList implements ListaEncadeada_IF {
     }
 
     public int[] toArray() {
-        Node temp = head;
-        int[] array = new int[size];
-        int i = 0;
-        while (temp.next != null) {
-            array[i] = temp.value;
-            temp = temp.next;
-            i++;
+        CustomArray temp = new CustomArray();
+        return recToArray(head, temp).getIntArray();
+    }
+
+    private CustomArray recToArray(Node node, CustomArray temp) {
+
+        if (node.next != null) {
+            recToArray(node.next, temp);
         }
-        array[size - 1] = temp.value;
-        return array;
+        temp.add(node.value);
+        return temp;
 
     }
 
+    /*
+     * public int[] toArray() {
+     * Node temp = head;
+     * int[] array = new int[size];
+     * int i = 0;
+     * 
+     * while (temp.next != null) {
+     * array[i] = temp.value;
+     * temp = temp.next;
+     * i++;
+     * }
+     * array[size - 1] = temp.value;
+     * return array;
+     * 
+     * }
+     */
 }
