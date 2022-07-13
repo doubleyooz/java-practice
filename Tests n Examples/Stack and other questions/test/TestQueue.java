@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import src.algorithms.Queue;
+import src.algorithms.Queue2;
 import test.utils.Assert;
 
 public class TestQueue {

@@ -1,5 +1,6 @@
 package src.algorithms;
 
+import java.util.Arrays;
 import src.interfaces.Pilha_IF;
 
 public class Stack implements Pilha_IF {
@@ -22,11 +23,11 @@ public class Stack implements Pilha_IF {
 
     }
 
-    public int getNext() throws ArrayIndexOutOfBoundsException {
+    public int top() throws ArrayIndexOutOfBoundsException {
         return array[top];
     }
 
-    public int top() {
+    public int getTopIndex() {
         return top;
     }
 
@@ -39,7 +40,10 @@ public class Stack implements Pilha_IF {
     }
 
     public int[] getArray() {
-        return array;
+        if(top == -1)
+            return new int[0];
+        
+        return Arrays.copyOfRange(array, 0, top+1);
     }
 
 }

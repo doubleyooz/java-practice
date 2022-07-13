@@ -19,37 +19,20 @@ public class BinarySearchTree implements BST_IF {
         }
     }
 
-    public BinarySearchTree() {
-        limit = -1;
-    }
-
-    public BinarySearchTree(int limit) {
-        this.limit = limit;
-    }
-
     Node head = new Node();
-    private int size = 0, limit = -1;
+    private int size = 0;
 
     public int getHeadValue() {
         return head.value;
     }
 
     public void insert(int element) {
-        if (limit > 0) {
-            if (size < limit) {
-                if (head.value == null)
-                    head.value = element;
-                else
-                    recAdd(head, element);
-                size++;
-            }
-        } else {
-            if (head.value == null)
-                head.value = element;
-            else
-                recAdd(head, element);
-            size++;
-        }
+
+        if (head.value == null)
+            head.value = element;
+        else
+            recAdd(head, element);
+        size++;
 
     }
 
@@ -102,7 +85,32 @@ public class BinarySearchTree implements BST_IF {
     }
 
     public boolean isComplete() {
-        return size == limit;
+        return recIsComplete(head) != -1;
+    }
+
+    private int recIsComplete(Node currentNode) {
+        if (currentNode == null) {
+            return 0;
+        }
+
+        // checking left subtree
+        int leftSubtreeHeight = recIsComplete(currentNode.left);
+        if (leftSubtreeHeight == -1)
+            return -1;
+        // if left subtree is not balanced then the entire tree is also not balanced
+
+        // checking right subtree
+        int rightSubtreeHeight = recIsComplete(currentNode.right);
+        if (rightSubtreeHeight == -1)
+            return -1;
+        // if right subtree is not balanced then the entire tree is also not balanced
+
+        // checking the difference of left and right subtree for current node
+        if (Math.abs(leftSubtreeHeight - rightSubtreeHeight) > 1) {
+            return -1;
+        }
+        // if it is balanced then return the height
+        return (Math.max(leftSubtreeHeight, rightSubtreeHeight) + 1);
     }
 
     private void recDelete(Node node, int number) {
