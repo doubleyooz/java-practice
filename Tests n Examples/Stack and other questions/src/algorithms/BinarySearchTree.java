@@ -84,6 +84,7 @@ public class BinarySearchTree implements BST_IF {
         return recSearch(head, value);
     }
 
+    //not working as expected
     public boolean isComplete() {
         return recIsComplete(head) != -1;
     }
