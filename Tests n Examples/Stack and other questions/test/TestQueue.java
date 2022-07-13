@@ -36,7 +36,7 @@ public class TestQueue {
         results.add(testGetEmptyQueueHead());
 
         // The queue head position must be -1
-        results.add(Assert.assertEqual(-1, queue.getHead(), "queue head position"));
+        results.add(Assert.assertEqual(-1, queue.head(), "queue head position"));
 
         // The queue tail position must be -1
         results.add(Assert.assertEqual(-1, queue.getTail(), "queue head position"));
@@ -46,7 +46,7 @@ public class TestQueue {
         results.add(Assert.assertEqual(42, queue.getNext(), "queue head element"));
 
         // The queue head and tail must be same
-        results.add(Assert.assertEqual(queue.getTail(), queue.getHead(),
+        results.add(Assert.assertEqual(queue.getTail(), queue.head(),
                 "queue head position should be equal to queue tail position"));
 
         ensureEnqueue(20);
@@ -83,7 +83,7 @@ public class TestQueue {
 
     private static void dequeueNElements(int n) {
         for (int i = 1; i <= n; i++) {
-            ensureDequeue(ensureLoop(1 + queue.getHead()));
+            ensureDequeue(ensureLoop(1 + queue.head()));
         }
     }
 
@@ -102,7 +102,7 @@ public class TestQueue {
     }
 
     private static void ensureEnqueue(int newTail) {
-        int headPosition = queue.getHead();
+        int headPosition = queue.head();
         int tailPosition = queue.getTail();
         int queueSize = queue.getSize();
         int previousTail;
@@ -118,10 +118,10 @@ public class TestQueue {
                 results.add(Assert.assertNotEqual(tailPosition, queue.getTail(), "queue tail position"));
 
                 // The queue head position must not be same as before
-                results.add(Assert.assertNotEqual(headPosition, queue.getHead(), "queue head position"));
+                results.add(Assert.assertNotEqual(headPosition, queue.head(), "queue head position"));
 
                 // The queue head position must be 0
-                results.add(Assert.assertEqual(0, queue.getHead(), "queue head position"));
+                results.add(Assert.assertEqual(0, queue.head(), "queue head position"));
 
                 break;
             case 10: // queue max size
@@ -138,7 +138,7 @@ public class TestQueue {
                 results.add(Assert.assertEqual(tailPosition, queue.getTail(), "queue tail position"));
 
                 // The queue head position must be same as before
-                results.add(Assert.assertEqual(headPosition, queue.getHead(), "queue head position"));
+                results.add(Assert.assertEqual(headPosition, queue.head(), "queue head position"));
                 break;
             default:
                 previousTail = queue.getLast();
@@ -154,7 +154,7 @@ public class TestQueue {
                 results.add(Assert.assertNotEqual(tailPosition, queue.getTail(), "queue tail position"));
 
                 // The queue head position must be same as before
-                results.add(Assert.assertEqual(headPosition, queue.getHead(), "queue head position"));
+                results.add(Assert.assertEqual(headPosition, queue.head(), "queue head position"));
 
                 break;
         }
@@ -162,7 +162,7 @@ public class TestQueue {
     }
 
     private static void ensureDequeue(int nextHead) {
-        int headPosition = queue.getHead();
+        int headPosition = queue.head();
         int tailPosition = queue.getTail();
         int queueSize = queue.getSize();
         int previousHeadElement = queue.getNext();
@@ -177,11 +177,11 @@ public class TestQueue {
                         "queue tail position"));
 
                 // The queue head position must not be same as before
-                results.add(Assert.assertNotEqual(headPosition, queue.getHead(),
+                results.add(Assert.assertNotEqual(headPosition, queue.head(),
                         "queue head position"));
 
                 // The queue head position must be -1
-                results.add(Assert.assertEqual(-1, queue.getHead(),
+                results.add(Assert.assertEqual(-1, queue.head(),
                         "queue head position"));
 
                 // The queue tail position must be -1
@@ -202,11 +202,11 @@ public class TestQueue {
                         "queue tail position"));
 
                 // The queue head position must not be same as before
-                results.add(Assert.assertNotEqual(headPosition, queue.getHead(),
+                results.add(Assert.assertNotEqual(headPosition, queue.head(),
                         "queue head position"));
 
                 // The queue head position must be -1
-                results.add(Assert.assertEqual(-1, queue.getHead(),
+                results.add(Assert.assertEqual(-1, queue.head(),
                         "queue head position"));
 
                 // The queue tail position must be -1
@@ -232,7 +232,7 @@ public class TestQueue {
                         "queue tail position"));
 
                 // The queue head position must not be same as before
-                results.add(Assert.assertNotEqual(headPosition, queue.getHead(),
+                results.add(Assert.assertNotEqual(headPosition, queue.head(),
                         "queue head position"));
 
                 // The queue must have empty positions

@@ -32,6 +32,14 @@ public class CustomArray {
         return arr.length == size;
     }
 
+    public int[] getIntArray(){
+        int[] newArr = new int[size];
+        for (int i = 0; i < size; i++){
+            newArr[i] = arr[i];
+        }
+        return newArr;
+    }
+
     public Integer[] getArray() {
         return arr;
     }

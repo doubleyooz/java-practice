@@ -1,6 +1,9 @@
 package src.algorithms;
 
-public class ChainedList {
+import java.util.NoSuchElementException;
+import src.interfaces.ListaEncadeada_IF;
+
+public class ChainedList implements ListaEncadeada_IF {
     private class Node {
         private int value;
         private Node next;
@@ -18,7 +21,7 @@ public class ChainedList {
 
     }
 
-    public void add(int value) {
+    public void insert(int value) {
         Node node = new Node(value);
 
         if (head == null)
@@ -60,7 +63,7 @@ public class ChainedList {
 
     }
 
-    public int getElementIndex(int value) {
+    public int search(int value) throws NoSuchElementException {
         Node temp = head;
         int i = 0;
         while (temp.value != value && temp.next != null) {
@@ -68,7 +71,10 @@ public class ChainedList {
             temp = temp.next;
             i++;
         }
-        return temp.value == value ? i : -1;
+        if (temp.value == value)
+            return i;
+        else
+            throw new NoSuchElementException();
     }
 
     public int getElement(int index) {
@@ -85,7 +91,7 @@ public class ChainedList {
         return temp.value;
     }
 
-    public void deleteElement(int index) {
+    public void remove(int index) {
         if (index == 0) {
             head = head.next;
         }
@@ -105,8 +111,12 @@ public class ChainedList {
         size--;
     }
 
-    public int getSize(){
+    public int size() {
         return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     public void list() {
@@ -119,7 +129,7 @@ public class ChainedList {
 
     }
 
-    public int[] getArray() {
+    public int[] toArray() {
         Node temp = head;
         int[] array = new int[size];
         int i = 0;

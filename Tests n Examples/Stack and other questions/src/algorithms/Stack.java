@@ -1,6 +1,8 @@
 package src.algorithms;
 
-public class Stack {
+import src.interfaces.Pilha_IF;
+
+public class Stack implements Pilha_IF {
 
     private int array[] = new int[10];
 
@@ -13,9 +15,10 @@ public class Stack {
         }
     }
 
-    public void pop() {
-        if (top > -1)
-            top--;
+    public int pop() throws Exception {
+        if(isEmpty())
+            return array[top];
+        return array[top--];
 
     }
 
@@ -23,12 +26,16 @@ public class Stack {
         return array[top];
     }
 
-    public int getTop(){
+    public int top() {
         return top;
     }
 
-    public boolean isFull(){
+    public boolean isFull() {
         return top >= array.length - 1;
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
     }
 
     public int[] getArray() {

@@ -8,8 +8,8 @@ public class Test {
     public static void main(String[] foo) {
         ArrayList<Boolean> tests;
         boolean result = true;
-        // tests = TestStack.testStackInstance();
-        tests = TestQueue.testQueueInstance();
+        tests = TestStack.testStackInstance();
+        //tests = TestQueue.testQueueInstance();
 
         for (int i = 0; i < tests.size(); i++) {
             if (!tests.get(i))

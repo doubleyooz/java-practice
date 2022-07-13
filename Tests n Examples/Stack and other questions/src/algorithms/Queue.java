@@ -1,6 +1,8 @@
 package src.algorithms;
 
-public class Queue {
+import src.interfaces.Fila_IF;
+
+public class Queue implements Fila_IF {
 
     private int array[] = new int[10];
     private int arraySize = array.length - 1;
@@ -53,7 +55,7 @@ public class Queue {
         return array[tail];
     }
 
-    public int getHead() {
+    public int head() {
         return head;
     }
 
@@ -67,6 +69,10 @@ public class Queue {
 
     public boolean isFull() {
         return size > arraySize;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     public int[] getArray() {
