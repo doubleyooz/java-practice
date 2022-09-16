@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import models.Professor;
+import models.Student;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,12 @@ public class App {
                     }
                     break;
                 case 2:
-                    secondMenu();
+                    try {
+                        secondMenu();
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                     break;
                 case 3:
                     thirdMenu();
@@ -141,7 +147,7 @@ public class App {
                         } else {
 
                             if (ProfessorRepository.delete(professors2.get(professorID - 1).getId()))
-                                System.out.println("The new Professor was registered");
+                                System.out.println("The specified professor was deleted.");
                             else
                                 System.out.println("Something went wrong");
                         }
@@ -159,9 +165,133 @@ public class App {
         }
     }
 
-    private static void secondMenu() {
+    private static void secondMenu() throws InterruptedException {
+        boolean loop = true;
+        while (loop) {
+            System.out.println("\n1 - Register a new Student");
+            System.out.println("2 - List Students");
+            System.out.println("3 - Update Student");
+            System.out.println("4 - Delete Student");
+            System.out.println("5 - Go back.\n");
 
+            switch (scan.nextInt()) {
+
+                case 1:
+                    System.out.println("Type their name: ");
+                    String name = scan.nextLine();
+                    name = scan.nextLine();
+                    System.out.println("Type their age: ");
+                    int age = scan.nextInt();
+                   
+                    Thread.sleep(1000);
+                    if (StudentRepository.store(name, age))
+                        System.out.println("The new Student was registered");
+                    else
+                        System.out.println("Something went wrong");
+                    break;
+                case 2:
+                    StudentRepository.printAll();
+                    break;
+
+                case 3:
+                    boolean minorLoop = true;
+                    System.out.println("Which student shall be updated?");
+                    ArrayList<Student> students = StudentRepository.list();
+
+                    while (minorLoop) {
+                        for (int i = 0; i < students.size(); i++) {
+                            System.out.printf("%d - %s\n", i + 1, students.get(i).getName());
+                        }
+
+                        System.out.println("0 - cancel");
+                        int studentId = scan.nextInt();
+                        if (studentId > students.size() || studentId < 0) {
+                            System.out.println("Choose a valid option.");
+                        } else if (studentId == 0) {
+                            minorLoop = false;
+                        } else {
+                            boolean minorLoop2 = true;
+                            while (minorLoop2) {
+                                System.out.println("Which property shall be updated?");
+                                System.out.printf("1 - name\n");
+                                System.out.printf("2 - age\n");
+                                System.out.printf("3 - cancel\n");
+
+                                int option3 = scan.nextInt();
+                                switch (option3) {
+                                    case 1:
+                                        System.out.println("Type their new name: ");
+                                        String temp = scan.nextLine();
+                                        temp = scan.nextLine();
+                                        Thread.sleep(1000);
+                                        if (StudentRepository.update(students.get(studentId - 1).getId(), temp))
+                                            System.out.println("The Student was updated");
+                                        else
+                                            System.out.println("Something went wrong");
+                                        minorLoop = false;
+                                        break;
+                                    case 2:
+                                        System.out.println("Type their new age: ");
+                                        int tempAge = scan.nextInt();
+                                        Thread.sleep(1000);
+                                        if (StudentRepository.update(students.get(studentId - 1).getId(), tempAge))
+                                            System.out.println("The Student was updated");
+                                        else
+                                            System.out.println("Something went wrong");
+                                        minorLoop = false;
+                                        break;
+                                    case 3:
+                                        minorLoop2 = false;
+                                    default:
+                                        System.out.println("Choose a valid option.");
+                                        break;
+
+                                }
+
+                            }
+                        }
+
+                    }
+
+                    break;
+
+                case 4:
+                    boolean loop2 = true;
+                    System.out.println("Which student shall be updated?");
+                    ArrayList<Student> students2 = StudentRepository.list();
+
+                    while (loop2) {
+                        for (int i = 0; i < students2.size(); i++) {
+                            System.out.printf("%d - %s\n", i + 1, students2.get(i).getName());
+                        }
+
+                        System.out.println("0 - cancel");
+                        int studentID = scan.nextInt();
+                        if (studentID > students2.size() || studentID < 0) {
+                            System.out.println("Choose a valid option.");
+                        } else if (studentID == 0) {
+                            loop2 = false;
+                        } else {
+
+                            if (StudentRepository.delete(students2.get(studentID - 1).getId()))
+                                System.out.println("The specified student was deleted");
+                            else
+                                System.out.println("Something went wrong");
+                        }
+
+                    }
+
+                    break;
+
+                case 5:
+                    loop = false;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
+
 
     private static void thirdMenu() {
 

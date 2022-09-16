@@ -31,6 +31,17 @@ public class StudentRepository {
         return false;
 
     }
+    public static boolean update(UUID id, int age) {
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId() == id) {
+                students.get(i).setAge(age);
+                return true;
+            }
+        }
+
+        return false;
+
+    }
 
     public static Student findOne(UUID id) {
         for (int i = 0; i < students.size(); i++) {
@@ -43,7 +54,11 @@ public class StudentRepository {
 
     }
 
-    public static void list() {
+    public static ArrayList<Student> list(){
+        return students;
+    }
+
+    public static void printAll() {
         System.out.println("\n[");
         for (int i = 0; i < students.size(); i++) {
 
