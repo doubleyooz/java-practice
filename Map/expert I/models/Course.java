@@ -10,7 +10,7 @@ public class Course extends Document {
     private String timetable;
 
     private ArrayList<Student> students;
-    private Professor professor;
+    private Professor professor = null;
 
     public Course(String name, String timetable, UUID id) {
         super(id);
@@ -18,6 +18,11 @@ public class Course extends Document {
         this.timetable = timetable;
         this.students = new ArrayList<Student>();
     
+    }
+
+    public void setStudents(ArrayList<Student> students){
+        this.students = students;
+
     }
 
     public ArrayList<Student> getStudents() {
