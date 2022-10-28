@@ -1,21 +1,25 @@
 import java.util.Scanner;
 
 import models.Actor;
-import models.Professor;
-import models.Student;
+import models.Director;
+import models.Cameraman;
+import models.Cinematographer;
+import models.Movie;
 
 import java.util.ArrayList;
 
-import repositories.ProfessorRepository;
-import repositories.StudentRepository;
 import repositories.ActorRepository;
+import repositories.CameramanRepository;
+import repositories.CinematographerRepository;
+import repositories.DirectorRepository;
+
 
 public class App {
 
     private static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("ACADEMIC CONTROL\n");
+        System.out.println("MOVIE CONTROL\n");
         boolean loop = true;
         while (loop) {
             System.out.println("1 - Professors");

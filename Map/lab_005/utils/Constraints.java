@@ -28,4 +28,11 @@ public class Constraints {
 
         return (age > 1 && age < 120);
     }
+
+    public static boolean isValidTitle(String title) {
+        int nameLength = title.length();
+        if (nameLength < 4 || nameLength > 20)
+            return false;
+        return true;
+    }
 }

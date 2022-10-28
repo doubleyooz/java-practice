@@ -7,8 +7,8 @@ import interfaces.Employee;
 public class Cameraman extends Employee {
     private boolean privateEquipment;
 
-    public Cameraman(String name, double wage, int age, boolean privateEquipment, UUID id) {
-        super(id, name, wage, name, age);
+    public Cameraman(String name, double wage, int age, boolean privateEquipment, String legalGender, UUID id) {
+        super(id, name, wage, legalGender, age);
         this.privateEquipment = privateEquipment;
         
 
