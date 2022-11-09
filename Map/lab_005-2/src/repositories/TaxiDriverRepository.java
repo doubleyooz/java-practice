@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import src.middlewares.TaxiDriverMiddleware;
 import src.models.TaxiDriver;
 
-public class TaxiDriverRepository {
-    private static ArrayList<TaxiDriver> taxiDrivers = new ArrayList<TaxiDriver>();
+public class TaxiDriverRepository extends TaxPayerRepository {
 
     private static TaxiDriverMiddleware middleware = new TaxiDriverMiddleware();
 
@@ -14,7 +13,7 @@ public class TaxiDriverRepository {
         if (!middleware.validStore(name, passengers))
             return false;
 
-        taxiDrivers.add(new TaxiDriver(name, ownsHouse, ownsCar, passengers));
+        taxPayers.add(new TaxiDriver(name, ownsHouse, ownsCar, passengers));
 
         return true;
 
@@ -27,68 +26,34 @@ public class TaxiDriverRepository {
         if (validProperties.length == 0)
             return false;
 
-        for (int i = 0; i < taxiDrivers.size(); i++) {
-            if (taxiDrivers.get(i).getSecurityNumber().equals(id)) {
+        for (int i = 0; i < taxPayers.size(); i++) {
+            if (taxPayers.get(i).getSecurityNumber().equals(id)) {
                 if (validProperties[0])
-                    taxiDrivers.get(i).setName(name);
+                    taxPayers.get(i).setName(name);
 
                 if (validProperties[1])
-                    taxiDrivers.get(i).setPassengers(passengers);
-                
+                    ((TaxiDriver) taxPayers.get(i)).setPassengers(passengers);
 
                 return true;
             }
         }
         return false;
 
-    }
-
-    public static TaxiDriver findOne(String id) {
-        if (!middleware.validFindOne(id))
-            return null;
-
-        for (int i = 0; i < taxiDrivers.size(); i++) {
-            if (taxiDrivers.get(i).getSecurityNumber().equals(id)) {
-                return taxiDrivers.get(i);
-            }
-        }
-
-        return null;
-
-    }
-
-    public static ArrayList<TaxiDriver> list() {
-        return taxiDrivers;
     }
 
     public static void printAll() {
         System.out.println("\n[");
-        for (int i = 0; i < taxiDrivers.size(); i++) {
+        for (int i = 0; i < taxPayers.size(); i++) {
 
             System.out.printf("\t%d: {\n", i);
-            System.out.printf("\t\tname: %s,\n", taxiDrivers.get(i).getName());
-            System.out.printf("\t\townsHouse: %b,\n", taxiDrivers.get(i).getOwnsHouse());
-            System.out.printf("\t\townsCar: %b,\n", taxiDrivers.get(i).getOwnsCar());
-            System.out.printf("\t\twage: %.2f,\n", taxiDrivers.get(i).getWage());
-            System.out.printf("\t\tsecurityNumber: %s,\n", taxiDrivers.get(i).getSecurityNumber());
+            System.out.printf("\t\tname: %s,\n", taxPayers.get(i).getName());
+            System.out.printf("\t\townsHouse: %b,\n", taxPayers.get(i).getOwnsHouse());
+            System.out.printf("\t\townsCar: %b,\n", taxPayers.get(i).getOwnsCar());
+            System.out.printf("\t\tpassengers: %d,\n", ((TaxiDriver) taxPayers.get(i)).getPassengers());
+            System.out.printf("\t\tsecurityNumber: %s,\n", taxPayers.get(i).getSecurityNumber());
             System.out.printf("\t},\n");
 
         }
         System.out.println("]");
-    }
-
-    public static boolean delete(String id) {
-        if (middleware.validFindOne(id))
-            return false;
-        for (int i = 0; i < taxiDrivers.size(); i++) {
-            if (taxiDrivers.get(i).getSecurityNumber().equals(id)) {
-
-                taxiDrivers.remove(taxiDrivers.get(i));
-                return true;
-            }
-        }
-
-        return false;
-
     }
 }

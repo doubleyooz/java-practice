@@ -1,13 +1,15 @@
-package src.interfaces;
+package src.repositories;
 
 import java.util.ArrayList;
 
 import src.middlewares.DoctorMiddleware;
 import src.models.TaxPayer;
 
-public interface TaxPayerRepository {
+public class TaxPayerRepository {
 
-    default TaxPayer findOne(String id, ArrayList<TaxPayer> taxPayers) {
+    protected static ArrayList<TaxPayer> taxPayers = new ArrayList<>();
+
+    protected static TaxPayer findOne(String id) {
         if (!new DoctorMiddleware().validFindOne(id))
             return null;
 
@@ -21,7 +23,11 @@ public interface TaxPayerRepository {
 
     }
 
-    default boolean delete(String id, ArrayList<TaxPayer> taxPayers) {
+    protected static ArrayList<TaxPayer> list() {
+        return taxPayers;
+    }
+
+    protected static boolean delete(String id) {
         if (new DoctorMiddleware().validFindOne(id))
             return false;
         for (int i = 0; i < taxPayers.size(); i++) {
