@@ -2,10 +2,11 @@ package src.repositories;
 
 import java.util.ArrayList;
 
+import src.interfaces.TaxPayerRepository;
 import src.middlewares.DoctorMiddleware;
 import src.models.Doctor;
 
-public class DoctorRepository {
+public class DoctorRepository implements TaxPayerRepository{
     private static ArrayList<Doctor> doctors = new ArrayList<Doctor>();
 
     private static DoctorMiddleware middleware = new DoctorMiddleware();

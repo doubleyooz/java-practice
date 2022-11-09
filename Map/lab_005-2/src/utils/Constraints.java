@@ -12,6 +12,10 @@ public class Constraints {
         return patients >= 0;
     }
 
+    public static boolean isValidPassengers(int patients) {
+        return patients >= 0;
+    }
+
     public static boolean isValidImposedCost(double imposedCost) {
         return imposedCost > 0;
     }
